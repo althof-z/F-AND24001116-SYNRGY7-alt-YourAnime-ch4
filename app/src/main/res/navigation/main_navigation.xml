@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.chapter_3_challenge.fragments.FirstFragment"
+        android:label="Your Anime List"
+        tools:layout="@layout/fragment_first">
+        <action
+            android:id="@+id/action_firstFragment_to_animeGenreFragment"
+            app:destination="@id/animeGenreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/animeGenreFragment"
+        android:name="com.example.chapter_3_challenge.fragments.AnimeGenreFragment"
+        android:label="Anime Genre"
+        tools:layout="@layout/fragment_anime_genre" >
+        <action
+            android:id="@+id/action_animeGenreFragment_to_animeListFragment"
+            app:destination="@id/animeListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/animeListFragment"
+        android:name="com.example.chapter_3_challenge.fragments.AnimeListFragment"
+        android:label="Anime List"
+        tools:layout="@layout/fragment_anime_list">
+
+        <argument
+            android:name="currentGenre"
+            app:argType="string"
+            android:defaultValue=""/>
+    </fragment>
+
+</navigation>
