@@ -7,7 +7,8 @@ import com.example.chapter_3_challenge.databinding.ItemAnimeBinding
 import com.example.chapter_3_challenge.fragments.data.Anime
 import com.example.chapter_3_challenge.fragments.viewholder.AnimeViewHolder
 
-class AnimeAdapter : ListAdapter<Anime, AnimeViewHolder>(AnimeDiffUtil()) {
+class AnimeAdapter(private val animeAdapterListener: AnimeAdapterListener)
+    : ListAdapter<Anime, AnimeViewHolder>(AnimeDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder {
         return AnimeViewHolder(
@@ -16,7 +17,7 @@ class AnimeAdapter : ListAdapter<Anime, AnimeViewHolder>(AnimeDiffUtil()) {
                 parent,
                 false,
             ),
-//            movieAdapterListener = movieAdapterListener,
+            animeAdapterListener = animeAdapterListener,
         )
     }
 

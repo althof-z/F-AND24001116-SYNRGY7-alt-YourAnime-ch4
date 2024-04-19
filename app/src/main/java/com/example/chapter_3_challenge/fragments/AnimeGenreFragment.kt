@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chapter_3_challenge.databinding.FragmentAnimeGenreBinding
@@ -25,59 +26,44 @@ class AnimeGenreFragment : Fragment(), GenreAdapterListener {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
-        return FragmentAnimeGenreBinding.inflate(inflater, container, false).also {
-            binding = it
-        }.root
+        binding = FragmentAnimeGenreBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupGenreRV(view.context)
+        setupGenreRV()
     }
 
-    private fun setupGenreRV(context: Context){
-        binding.rvAnimeGenre.adapter = genreAdapter
-
-        binding.rvAnimeGenre.layoutManager = LinearLayoutManager(
-            context, RecyclerView.VERTICAL, false
-        )
-        binding.rvAnimeGenre.itemAnimator = DefaultItemAnimator()
-
-        genreAdapter.submitList(retreiveAvailableGenre())
+    private fun setupGenreRV(){
+        binding.rvAnimeGenre.apply {
+            adapter = genreAdapter
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            itemAnimator = DefaultItemAnimator()
+        }
+        genreAdapter.submitList(retrieveAvailableGenres())
     }
 
-    private fun retreiveAvailableGenre(): List<Genre>{
+    private fun retrieveAvailableGenres(): List<Genre> {
         return listOf(
-            Genre(
-                title = "Action",
-            ), Genre(
-                title = "Fantasy",
-            ), Genre(
-                title = "Adventure",
-            ),Genre(
-                title = "Sports",
-            ), Genre(
-                title = "Drama",
-            ),Genre(
-                title = "Slice of Life",
-            ), Genre(
-                title = "Romance",
-            ), Genre(
-                title = "Music",
-            ),Genre(
-                title = "Horror",
-            ), Genre(
-                title = "Thriller",
-            ),
+            Genre("Action"),
+            Genre("Fantasy"),
+            Genre("Adventure"),
+            Genre("Sports"),
+            Genre("Drama"),
+            Genre("Slice of Life"),
+            Genre("Romance"),
+            Genre("Music"),
+            Genre("Horror"),
+            Genre("Thriller")
         )
     }
 
     private fun navigateToAnimeList(data: Genre) {
         val actionToAnimeList = AnimeGenreFragmentDirections
             .actionAnimeGenreFragmentToAnimeListFragment()
-        actionToAnimeList.currentGenre = data.title
+            .setCurrentGenre(data.title)
         findNavController().navigate(actionToAnimeList)
     }
 
