@@ -1,16 +1,21 @@
 package com.example.chapter_3_challenge.fragments
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.chapter_3_challenge.R
 import com.example.chapter_3_challenge.databinding.FragmentAnimeListBinding
 import com.example.chapter_3_challenge.fragments.adapter.AnimeAdapter
 import com.example.chapter_3_challenge.fragments.adapter.AnimeAdapterListener
@@ -20,6 +25,7 @@ import com.example.chapter_3_challenge.fragments.data.Anime
 class AnimeListFragment : Fragment(), AnimeAdapterListener {
     private lateinit var binding: FragmentAnimeListBinding
     private lateinit var genre: String
+    private var isGridLayout = false
     private val animeAdapter = AnimeAdapter(this)
 
     override fun onCreateView(
@@ -27,15 +33,25 @@ class AnimeListFragment : Fragment(), AnimeAdapterListener {
         savedInstanceState: Bundle?
     ): View {
         genre = AnimeListFragmentArgs.fromBundle(requireArguments()).currentGenre
-        return FragmentAnimeListBinding.inflate(inflater, container, false).also {
-            binding = it
-        }.root
+        binding = FragmentAnimeListBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupAnimeRV(view.context)
+        setupAnimeRV()
+        setHasOptionsMenu(true)
+
+        (activity as AppCompatActivity).supportActionBar?.title = "Anime List: $genre"
+    }
+
+    private fun setupAnimeRV(){
+        binding.rvAnimeList.apply {
+            adapter = animeAdapter
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            itemAnimator = DefaultItemAnimator()
+        }
         animeAdapter.submitList(getAnimeOfGenre())
     }
 
@@ -116,13 +132,7 @@ class AnimeListFragment : Fragment(), AnimeAdapterListener {
     }
 
 
-    private fun setupAnimeRV(context: Context){
-        binding.rvAnimeList.apply {
-            adapter = animeAdapter
-            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            itemAnimator = DefaultItemAnimator()
-        }
-    }
+
 
     private fun searchAnime(data: Anime) {
         val intent = Intent(Intent.ACTION_VIEW).apply {
@@ -135,5 +145,22 @@ class AnimeListFragment : Fragment(), AnimeAdapterListener {
         searchAnime(data)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu)
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_grid) {
+            isGridLayout = !isGridLayout
+            binding.rvAnimeList.layoutManager = if (isGridLayout) {
+                GridLayoutManager(requireContext(), 2)
+            } else {
+                LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
+            }
+            return true
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
 }

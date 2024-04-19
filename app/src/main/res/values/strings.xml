@@ -6,4 +6,5 @@
     <string name="main_title">Anime List</string>
     <string name="main_desc">Find Your Favorite Anime to Watch, We\'ll Give You The Best Recommendation</string>
     <string name="btn_main_text">Go</string>
+    <string name="layout">layout</string>
 </resources>
