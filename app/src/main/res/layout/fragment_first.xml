@@ -16,22 +16,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:contentDescription="@string/poster"
+        android:src="@drawable/main_poster"/>
 
     <TextView
         android:id="@+id/tv_title"
         style="@style/TitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Anime List"
+        android:layout_marginTop="32dp"
+        android:text="@string/main_title"
         app:layout_constraintTop_toBottomOf="@+id/iv_main" />
 
     <TextView
         android:id="@+id/tv_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text= "Find Your Favorite Anime to Watch, We'll Give You The Best Recommendation"
+        android:text= "@string/main_desc"
         android:textAlignment="center"
         android:textSize="15sp"
         app:layout_constraintTop_toBottomOf="@+id/tv_title" />
@@ -41,8 +42,8 @@
         android:id="@+id/btn_login"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Go"
+        android:layout_marginTop="24dp"
+        android:text="@string/btn_main_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_desc" />

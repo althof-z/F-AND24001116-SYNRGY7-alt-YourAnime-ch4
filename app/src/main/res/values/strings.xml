@@ -2,4 +2,8 @@
     <string name="app_name">Chapter-3-Challenge</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello Anime Genre HERE</string>
+    <string name="poster">Poster</string>
+    <string name="main_title">Anime List</string>
+    <string name="main_desc">Find Your Favorite Anime to Watch, We\'ll Give You The Best Recommendation</string>
+    <string name="btn_main_text">Go</string>
 </resources>
