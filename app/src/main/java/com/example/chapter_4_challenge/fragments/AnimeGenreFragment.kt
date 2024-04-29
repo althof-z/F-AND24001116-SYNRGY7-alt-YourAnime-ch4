@@ -1,4 +1,4 @@
-package com.example.chapter_3_challenge.fragments
+package com.example.chapter_4_challenge.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,21 +8,23 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chapter_3_challenge.R
-import com.example.chapter_3_challenge.databinding.FragmentAnimeGenreBinding
-import com.example.chapter_3_challenge.fragments.adapter.GenreAdapter
-import com.example.chapter_3_challenge.fragments.adapter.GenreAdapterListener
-import com.example.chapter_3_challenge.fragments.data.Genre
+import com.example.chapter_4_challenge.R
+import com.example.chapter_4_challenge.databinding.FragmentAnimeGenreBinding
+import com.example.chapter_4_challenge.fragments.adapter.GenreAdapter
+import com.example.chapter_4_challenge.fragments.adapter.GenreAdapterListener
+import com.example.chapter_4_challenge.fragments.data.Genre
 
 class AnimeGenreFragment : Fragment(), GenreAdapterListener {
 
     private lateinit var binding: FragmentAnimeGenreBinding
     private val genreAdapter = GenreAdapter(this)
+    private val viewModel : AnimeGenreFragmentViewModel by viewModels()
 
     private var isGridLayout = false
     override fun onCreateView(
@@ -48,23 +50,10 @@ class AnimeGenreFragment : Fragment(), GenreAdapterListener {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             itemAnimator = DefaultItemAnimator()
         }
-        genreAdapter.submitList(retrieveAvailableGenres())
+        genreAdapter.submitList(viewModel.retrieveAvailableGenres())
     }
 
-    private fun retrieveAvailableGenres(): List<Genre> {
-        return listOf(
-            Genre("Action"),
-            Genre("Fantasy"),
-            Genre("Adventure"),
-            Genre("Sports"),
-            Genre("Drama"),
-            Genre("Slice of Life"),
-            Genre("Romance"),
-            Genre("Music"),
-            Genre("Horror"),
-            Genre("Thriller")
-        )
-    }
+
 
     private fun navigateToAnimeList(data: Genre) {
         val actionToAnimeList = AnimeGenreFragmentDirections

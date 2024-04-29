@@ -1,4 +1,4 @@
-package com.example.chapter_3_challenge
+package com.example.chapter_4_challenge
 
 import org.junit.Test
 

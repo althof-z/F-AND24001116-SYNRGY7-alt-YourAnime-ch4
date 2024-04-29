@@ -1,10 +1,10 @@
-package com.example.chapter_3_challenge
+package com.example.chapter_4_challenge
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.chapter_3_challenge.databinding.ActivityMainBinding
+import com.example.chapter_4_challenge.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 

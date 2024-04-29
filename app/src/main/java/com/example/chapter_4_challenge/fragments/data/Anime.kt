@@ -1,4 +1,4 @@
-package com.example.chapter_3_challenge.fragments.data
+package com.example.chapter_4_challenge.fragments.data
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

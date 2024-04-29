@@ -1,4 +1,4 @@
-package com.example.chapter_3_challenge.fragments
+package com.example.chapter_4_challenge.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import com.example.chapter_3_challenge.R
-import com.example.chapter_3_challenge.databinding.FragmentFirstBinding
+import com.example.chapter_4_challenge.R
+import com.example.chapter_4_challenge.databinding.FragmentFirstBinding
 
 class  FirstFragment : Fragment() {
 

@@ -1,4 +1,4 @@
-package com.example.chapter_3_challenge.fragments
+package com.example.chapter_4_challenge.fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -15,11 +15,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.chapter_3_challenge.R
-import com.example.chapter_3_challenge.databinding.FragmentAnimeListBinding
-import com.example.chapter_3_challenge.fragments.adapter.AnimeAdapter
-import com.example.chapter_3_challenge.fragments.adapter.AnimeAdapterListener
-import com.example.chapter_3_challenge.fragments.data.Anime
+import com.example.chapter_4_challenge.R
+import com.example.chapter_4_challenge.databinding.FragmentAnimeListBinding
+import com.example.chapter_4_challenge.fragments.adapter.AnimeAdapter
+import com.example.chapter_4_challenge.fragments.adapter.AnimeAdapterListener
+import com.example.chapter_4_challenge.fragments.data.Anime
 
 
 class AnimeListFragment : Fragment(), AnimeAdapterListener {

@@ -1,11 +1,11 @@
-package com.example.chapter_3_challenge.fragments.adapter
+package com.example.chapter_4_challenge.fragments.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.example.chapter_3_challenge.databinding.ItemAnimeBinding
-import com.example.chapter_3_challenge.fragments.data.Anime
-import com.example.chapter_3_challenge.fragments.viewholder.AnimeViewHolder
+import com.example.chapter_4_challenge.databinding.ItemAnimeBinding
+import com.example.chapter_4_challenge.fragments.data.Anime
+import com.example.chapter_4_challenge.fragments.viewholder.AnimeViewHolder
 
 class AnimeAdapter(private val animeAdapterListener: AnimeAdapterListener)
     : ListAdapter<Anime, AnimeViewHolder>(AnimeDiffUtil()) {
