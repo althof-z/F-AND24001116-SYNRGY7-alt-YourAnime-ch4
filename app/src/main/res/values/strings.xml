@@ -7,4 +7,12 @@
     <string name="main_desc">Find Your Favorite Anime to Watch, We\'ll Give You The Best Recommendation</string>
     <string name="btn_main_text">Go</string>
     <string name="layout">layout</string>
+    <string name="txt_goto_login">If You Already Have An Account, Login Here</string>
+    <string name="txt_username">Username</string>
+    <string name="txt_email">Email</string>
+    <string name="txt_pw">Password</string>
+    <string name="txt_title_login">Log In</string>
+    <string name="txt_goto_reg">If You Don\'t Have An Account, Register Here</string>
+    <string name="txt_btn_log">LOGIN</string>
+    <string name="txt_btn_register">Register</string>
 </resources>
