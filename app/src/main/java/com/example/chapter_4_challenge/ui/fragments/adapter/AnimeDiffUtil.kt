@@ -1,7 +1,7 @@
-package com.example.chapter_4_challenge.fragments.adapter
+package com.example.chapter_4_challenge.ui.fragments.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.chapter_4_challenge.fragments.data.Anime
+import com.example.chapter_4_challenge.ui.fragments.data.Anime
 
 class AnimeDiffUtil : DiffUtil.ItemCallback<Anime>() {
 

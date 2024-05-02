@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/firstFragment"
-        android:name="com.example.chapter_4_challenge.fragments.FirstFragment"
+        android:name="com.example.chapter_4_challenge.ui.fragments.FirstFragment"
         android:label="Your Anime List"
         tools:layout="@layout/fragment_first">
         <action
@@ -22,27 +22,13 @@
     </fragment>
     <fragment
         android:id="@+id/animeGenreFragment"
-        android:name="com.example.chapter_4_challenge.fragments.AnimeGenreFragment"
+        android:name="com.example.chapter_4_challenge.ui.fragments.AnimeFragment"
         android:label="Anime Genre"
-        tools:layout="@layout/fragment_anime_genre" >
-        <action
-            android:id="@+id/action_animeGenreFragment_to_animeListFragment"
-            app:destination="@id/animeListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/animeListFragment"
-        android:name="com.example.chapter_4_challenge.fragments.AnimeListFragment"
-        android:label="Anime List"
-        tools:layout="@layout/fragment_anime_list">
-
-        <argument
-            android:name="currentGenre"
-            app:argType="string"
-            android:defaultValue=""/>
+        tools:layout="@layout/fragment_anime" >
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.chapter_4_challenge.fragments.LoginFragment"
+        android:name="com.example.chapter_4_challenge.ui.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -51,7 +37,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.chapter_4_challenge.fragments.RegisterFragment"
+        android:name="com.example.chapter_4_challenge.ui.fragments.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action

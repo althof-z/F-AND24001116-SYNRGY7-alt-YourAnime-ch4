@@ -1,9 +1,9 @@
-package com.example.chapter_4_challenge.fragments.viewholder
+package com.example.chapter_4_challenge.ui.fragments.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chapter_4_challenge.databinding.ItemAnimeBinding
-import com.example.chapter_4_challenge.fragments.adapter.AnimeAdapterListener
-import com.example.chapter_4_challenge.fragments.data.Anime
+import com.example.chapter_4_challenge.ui.fragments.adapter.AnimeAdapterListener
+import com.example.chapter_4_challenge.ui.fragments.data.Anime
 
 class AnimeViewHolder (
     private val itemViewBinding: ItemAnimeBinding, private val animeAdapterListener: AnimeAdapterListener

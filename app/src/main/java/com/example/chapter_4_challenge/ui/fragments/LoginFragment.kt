@@ -1,4 +1,4 @@
-package com.example.chapter_4_challenge.fragments
+package com.example.chapter_4_challenge.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,13 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.chapter_4_challenge.R
 import com.example.chapter_4_challenge.databinding.FragmentLoginBinding
-import com.example.chapter_4_challenge.databinding.FragmentRegisterBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LoginFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class LoginFragment : Fragment() {
 
     private lateinit var viewBinding: FragmentLoginBinding

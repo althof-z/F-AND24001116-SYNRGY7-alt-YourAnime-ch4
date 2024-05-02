@@ -1,15 +1,14 @@
-package com.example.chapter_4_challenge
+package com.example.chapter_4_challenge.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.example.chapter_4_challenge.R
 import com.example.chapter_4_challenge.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    companion object{
-    }
 
     private val viewBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
@@ -19,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(viewBinding.root)
 
         setupNavigationComponentWithAppBar()
-
 
     }
 
