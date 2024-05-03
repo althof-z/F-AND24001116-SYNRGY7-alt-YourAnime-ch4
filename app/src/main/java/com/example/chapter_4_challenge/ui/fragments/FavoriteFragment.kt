@@ -17,24 +17,26 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chapter_4_challenge.R
-import com.example.chapter_4_challenge.databinding.FragmentAnimeBinding
+import com.example.chapter_4_challenge.databinding.FragmentFavoriteBinding
 import com.example.chapter_4_challenge.ui.fragments.adapter.AnimeAdapter
 import com.example.chapter_4_challenge.ui.fragments.adapter.AnimeAdapterListener
 import com.example.chapter_4_challenge.ui.fragments.data.Anime
 
-class AnimeFragment : Fragment(), AnimeAdapterListener {
-    private lateinit var binding: FragmentAnimeBinding
+
+class FavoriteFragment : Fragment(), AnimeAdapterListener {
+
+    private lateinit var binding: FragmentFavoriteBinding
     private val animeAdapter = AnimeAdapter(this)
 
-    private val viewModel by viewModels<AnimeFragmentViewModel> {
-        AnimeFragmentViewModel.provideFactory(this, requireContext())
+    private val viewModel by viewModels<FavoriteFragmentViewModel> {
+        FavoriteFragmentViewModel.provideFactory(this, requireContext())
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAnimeBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
+        binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -59,7 +61,7 @@ class AnimeFragment : Fragment(), AnimeAdapterListener {
             itemAnimator = DefaultItemAnimator()
         }
 
-        viewModel.retrieveAvailableAnimes()
+        viewModel.getMovieFromLocal()
 
         viewModel.animes.observe(viewLifecycleOwner){ animes ->
             animeAdapter.submitList(animes)
@@ -80,7 +82,7 @@ class AnimeFragment : Fragment(), AnimeAdapterListener {
                 true
             }
             R.id.action_favorite ->{
-                findNavController().navigate(R.id.action_animeFragment_to_favoriteFragment)
+                findNavController().navigate(R.id.favoriteFragment)
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -90,11 +92,8 @@ class AnimeFragment : Fragment(), AnimeAdapterListener {
 
     override fun onClickFavButton(data: Anime) {
         viewModel.loadAnimeFromFavorite(data.id)
-        viewModel.storeToFavorite(
-            id = data.id,
-            title = data.title
-        )
-        findNavController().navigate(R.id.action_animeFragment_to_favoriteFragment)
+        viewModel.deleteAnimeFromFavorite(data)
+        viewModel.getMovieFromLocal()
     }
 
     override fun onClickSearchButton(data: Anime) {

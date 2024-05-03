@@ -15,7 +15,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_anime_title"
-            android:layout_width="300dp"
+            android:layout_width="350dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:textColor="@color/black"
@@ -25,20 +25,13 @@
             tools:text="@tools:sample/lorem" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_search_anime"
+            android:id="@+id/btn_delete_fav"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_search"
+            android:src="@drawable/ic_delete"
             app:layout_constraintStart_toEndOf="@+id/tv_anime_title" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btn_fav_anime"
-            android:layout_width="50dp"
-            android:background="@android:color/transparent"
-            android:layout_height="match_parent"
-            android:src="@drawable/ic_fav_border"
-            app:layout_constraintStart_toEndOf="@+id/btn_search_anime" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -36,15 +36,6 @@ class  FirstFragment : Fragment() {
             findNavController().navigate(R.id.action_firstFragment_to_animeFragment)
         }
 
-        viewBinding.btnGo.setOnClickListener{
-            it.findNavController().navigate(R.id.action_firstFragment_to_animeFragment)
-
-        }
-
-        viewBinding.btnRegister.setOnClickListener {
-            it.findNavController().navigate(R.id.action_firstFragment_to_registerFragment)
-        }
-
         viewBinding.btnLogin.setOnClickListener {
             it.findNavController().navigate(R.id.action_firstFragment_to_loginFragment)
         }

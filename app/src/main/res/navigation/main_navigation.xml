@@ -16,36 +16,38 @@
         <action
             android:id="@+id/action_firstFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_firstFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
     </fragment>
     <fragment
         android:id="@+id/animeFragment"
         android:name="com.example.chapter_4_challenge.ui.fragments.AnimeFragment"
-        android:label="Anime "
+        android:label="Best Animes "
         tools:layout="@layout/fragment_anime" >
+        <action
+            android:id="@+id/action_animeFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
+        <action
+            android:id="@+id/action_animeFragment_to_firstFragment"
+            app:destination="@id/firstFragment"
+            app:popUpTo="@id/animeFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.chapter_4_challenge.ui.fragments.LoginFragment"
-        android:label="fragment_login"
+        android:label="Log In"
         tools:layout="@layout/fragment_login" >
-        <action
-            android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
         <action
             android:id="@+id/action_loginFragment_to_animeFragment"
             app:destination="@id/animeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/registerFragment"
-        android:name="com.example.chapter_4_challenge.ui.fragments.RegisterFragment"
-        android:label="fragment_register"
-        tools:layout="@layout/fragment_register" >
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.chapter_4_challenge.ui.fragments.FavoriteFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorite" >
         <action
-            android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_favoriteFragment_to_firstFragment"
+            app:destination="@id/firstFragment" />
     </fragment>
 
 </navigation>

@@ -7,6 +7,11 @@
         android:id="@+id/action_logout"
         android:title="Log Out"
         app:showAsAction="collapseActionView"/>
+    <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/ic_fav_border"
+        android:title="Fav"
+        app:showAsAction="ifRoom"/>
 
 
 </menu>

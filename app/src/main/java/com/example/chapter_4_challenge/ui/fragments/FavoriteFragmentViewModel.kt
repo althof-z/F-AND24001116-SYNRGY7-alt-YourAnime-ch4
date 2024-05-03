@@ -24,10 +24,10 @@ import com.example.chapter_4_challenge.domain.AuthRepository
 import com.example.chapter_4_challenge.ui.fragments.data.Anime
 import kotlinx.coroutines.launch
 
-class AnimeFragmentViewModel(
+class FavoriteFragmentViewModel(
     private val animeRepository: AnimeRepository,
-    private val authRepository: AuthRepository
-) : ViewModel() {
+    private val authRepository: AuthRepository,
+): ViewModel(){
 
     companion object {
         fun provideFactory(
@@ -55,45 +55,42 @@ class AnimeFragmentViewModel(
                         localData = localData,
                     )
                     val authRepository: AuthRepository = AuthRepositoryImpl(
-                    authLocalData = AuthLocalDataImpl(
-                        sharedPreferences = SharedPreferencesFactory().createSharedPreferences(context),
-                    ),
-                    authRemoteData = AuthRemoteDataImpl(),
-                )
-                    return AnimeFragmentViewModel(
+                        authLocalData = AuthLocalDataImpl(
+                            sharedPreferences = SharedPreferencesFactory().createSharedPreferences(context),
+                        ),
+                        authRemoteData = AuthRemoteDataImpl(),
+                    )
+                    return FavoriteFragmentViewModel(
                         animeRepository = myRepository,
                         authRepository = authRepository
                     ) as T
                 }
             }
+
+
     }
 
     private val _animes: MutableLiveData<List<Anime>> = MutableLiveData()
     val animes: LiveData<List<Anime>> = _animes
 
-    fun retrieveAvailableAnimes(){
-        _animes.value = animeRepository.fetchData()
-    }
-
-
-    fun storeToFavorite(
-        title: String,
-        id: Int,
-    ){
-      viewModelScope.launch {
-          val anime = Anime(
-              id = id,
-              title = title,
-          )
-          animeRepository.storeFavorite(anime)
-      }
-    }
-
-    fun logout() {
-        authRepository.clearToken()
-    }
     private val _error = MutableLiveData<Throwable>()
     val error: LiveData<Throwable> = _error
+
+    fun getMovieFromLocal(){
+        viewModelScope.launch {
+            try {
+                _animes.value = animeRepository.getAllAnime()
+            } catch (throwable: Throwable) {
+                _error.value = throwable
+            }
+        }
+    }
+
+    fun deleteAnimeFromFavorite(anime: Anime){
+        viewModelScope.launch {
+            animeRepository.deleteAnime(anime)
+        }
+    }
 
     private val _animeLocal = MutableLiveData<Anime?>()
     fun loadAnimeFromFavorite(id: Int){
@@ -104,6 +101,9 @@ class AnimeFragmentViewModel(
                 _error.value = throwable
             }
         }
+    }
+    fun logout() {
+        authRepository.clearToken()
     }
 
 
