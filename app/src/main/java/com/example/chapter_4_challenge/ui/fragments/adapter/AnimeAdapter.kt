@@ -3,7 +3,7 @@ package com.example.chapter_4_challenge.ui.fragments.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import com.example.chapter_4_challenge.databinding.ItemAnimeBinding
+import com.example.chapter_4_challenge.databinding.ItemAnimeNewBinding
 import com.example.chapter_4_challenge.ui.fragments.data.Anime
 import com.example.chapter_4_challenge.ui.fragments.viewholder.AnimeViewHolder
 
@@ -12,7 +12,7 @@ class AnimeAdapter(private val animeAdapterListener: AnimeAdapterListener)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder {
         return AnimeViewHolder(
-            itemViewBinding = ItemAnimeBinding.inflate(
+            itemViewBinding = ItemAnimeNewBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false,

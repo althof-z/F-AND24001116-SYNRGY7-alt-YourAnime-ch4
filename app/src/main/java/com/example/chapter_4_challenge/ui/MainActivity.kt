@@ -1,6 +1,7 @@
 package com.example.chapter_4_challenge.ui
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -11,13 +12,17 @@ class MainActivity : AppCompatActivity() {
 
 
     private val viewBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private val viewModel by viewModels<MainActViewModel> {
+        MainActViewModel.provideFactory(this, this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(viewBinding.root)
-
         setupNavigationComponentWithAppBar()
+
+
 
     }
 

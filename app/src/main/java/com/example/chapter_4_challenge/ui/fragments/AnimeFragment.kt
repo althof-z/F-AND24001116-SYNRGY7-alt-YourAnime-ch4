@@ -11,8 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.chapter_4_challenge.R
@@ -23,12 +23,11 @@ import com.example.chapter_4_challenge.ui.fragments.data.Anime
 
 class AnimeFragment : Fragment(), AnimeAdapterListener {
     private lateinit var binding: FragmentAnimeBinding
-    private var isGridLayout = false
     private val animeAdapter = AnimeAdapter(this)
 
-    private val animeFragmentViewModel by viewModels<AnimeFragmentViewModel> (
-        factoryProducer = { AnimeFragmentViewModel.Factory }
-    )
+    private val viewModel by viewModels<AnimeFragmentViewModel> (){
+        AnimeFragmentViewModel.provideFactory(this, requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,9 +53,9 @@ class AnimeFragment : Fragment(), AnimeAdapterListener {
             itemAnimator = DefaultItemAnimator()
         }
 
-        animeFragmentViewModel.retrieveAvailableAnimes()
+        viewModel.retrieveAvailableAnimes()
 
-        animeFragmentViewModel.animes.observe(viewLifecycleOwner){ animes ->
+        viewModel.animes.observe(viewLifecycleOwner){ animes ->
             animeAdapter.submitList(animes)
         }
     }
@@ -68,19 +67,19 @@ class AnimeFragment : Fragment(), AnimeAdapterListener {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_grid) {
-            isGridLayout = !isGridLayout
-            binding.rvAnimeList.layoutManager = if (isGridLayout) {
-                GridLayoutManager(requireContext(), 2)
-            } else {
-                LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            }
-            return true
+        if (item.itemId == R.id.action_logout) {
+            viewModel.logout()
+            findNavController().navigate(R.id.firstFragment)
+            TODO(" POP Bact stack")
         }
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onClickAnime(data: Anime) {
+    override fun onClickFavButton(data: Anime) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClickSearchButton(data: Anime) {
         searchAnime(data)
     }
 

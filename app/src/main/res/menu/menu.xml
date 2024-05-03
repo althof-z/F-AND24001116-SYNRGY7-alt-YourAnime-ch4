@@ -4,10 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_grid"
-        android:icon="@drawable/ic_layout"
-        android:title="@string/layout"
-        app:showAsAction="ifRoom"/>
+        android:id="@+id/action_logout"
+        android:title="Log Out"
+        app:showAsAction="collapseActionView"/>
 
 
 </menu>

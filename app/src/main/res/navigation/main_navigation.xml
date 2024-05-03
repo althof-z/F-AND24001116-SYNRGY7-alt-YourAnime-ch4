@@ -11,8 +11,8 @@
         android:label="Your Anime List"
         tools:layout="@layout/fragment_first">
         <action
-            android:id="@+id/action_firstFragment_to_animeGenreFragment"
-            app:destination="@id/animeGenreFragment" />
+            android:id="@+id/action_firstFragment_to_animeFragment"
+            app:destination="@id/animeFragment" />
         <action
             android:id="@+id/action_firstFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -21,9 +21,9 @@
             app:destination="@id/registerFragment" />
     </fragment>
     <fragment
-        android:id="@+id/animeGenreFragment"
+        android:id="@+id/animeFragment"
         android:name="com.example.chapter_4_challenge.ui.fragments.AnimeFragment"
-        android:label="Anime Genre"
+        android:label="Anime "
         tools:layout="@layout/fragment_anime" >
     </fragment>
     <fragment
@@ -34,6 +34,9 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_animeFragment"
+            app:destination="@id/animeFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"

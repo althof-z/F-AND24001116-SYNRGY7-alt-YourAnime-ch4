@@ -4,5 +4,6 @@ import com.example.chapter_4_challenge.ui.fragments.data.Anime
 
 interface AnimeAdapterListener {
 
-    fun onClickAnime(data: Anime)
+    fun onClickFavButton(data: Anime)
+    fun onClickSearchButton(data: Anime)
 }
